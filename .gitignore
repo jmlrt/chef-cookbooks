@@ -1,1 +1,2 @@
-myenv/files/default/.gitignore
+myenv/files/default/jmailleret-pubkey
+myenv/attributes/default.rb

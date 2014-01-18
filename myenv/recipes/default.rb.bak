@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# Update packages list
+# Update packages
 case node["platform_family"]
 when "debian"
   execute "apt-get update" do
@@ -41,46 +41,46 @@ if system("id pi > /dev/null 2>&1")
   end
 end
 
-# Create my User and my Group
-group [:myenv][:mygroup] do
+# Create User and Group "jmlrt"
+group "jmlrt" do
   action :create
-  gid [:myenv][:mygid]
+  gid 1025
 end
 
-user [:myenv][:myuser] do
+user "jmlrt" do
   action :create
   supports :manage_home => true
-  comment [:myenv][:mycomment]
-  uid [:myenv][:myuid]
-  gid [:myenv][:mygid]
-  home "/home/"[:myenv][:myuser]
+  comment "Julien M."
+  uid 1025
+  gid 1025
+  home "/home/jmlrt"
   shell "/bin/bash"
-  password [:myenv][:mypassword]
+  #password ""
 end
 
-# Add my User to sudo groups
+# Add User "jmlrt to sudo groups
 group "sudo" do
-  members [:myenv][:myuser]
+  members "jmlrt"
   action :manage
 end
 
 group "wheel" do
-  members [:myenv][:myuser]
+  members "jmlrt"
   action :manage
 end
 
-# Add my ssh pubkey
-directory "/home/"[:myenv][:myuser]"/.ssh" do
-  owner [:myenv][:myuser]
-  group [:myenv][:mygroup]
+# Add jmlrt ssh pubkey
+directory "/home/jmlrt/.ssh" do
+  owner "jmlrt"
+  group "jmlrt"
   mode "0700"
   action :create
 end
 
-cookbook_file "/home/"[:myenv][:myuser]"/.ssh/authorized_keys" do
-  owner [:myenv][:myuser]
-  group [:myenv][:mygroup]
+cookbook_file "/home/jmlrt/.ssh/authorized_keys" do
+  owner "jmlrt"
+  group "jmlrt"
   mode "0600"
-  source [:myenv][:mypubkey]
+  source "jmailleret-pubkey"
   action :create
 end
