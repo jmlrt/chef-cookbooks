@@ -13,7 +13,7 @@ if platform?("ubuntu")
   execute "apt-get update"
 end
 
-# Install some usefull packages
+# Install vim packages
 package "vim"
 
 # Set vim as default editor
