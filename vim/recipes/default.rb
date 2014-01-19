@@ -2,7 +2,7 @@
 # Cookbook Name:: vim
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
+# Copyright 2014, JMLRT
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -15,3 +15,6 @@ end
 
 # Install some usefull packages
 package "vim"
+
+# Set vim as default editor
+execute "update-alternatives --set editor /usr/bin/vim.basic"

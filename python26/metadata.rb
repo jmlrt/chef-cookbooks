@@ -1,5 +1,5 @@
 name             'python26'
-maintainer       'YOUR_COMPANY_NAME'
+maintainer       'JMLRT'
 maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
 description      'Installs/Configures python26'

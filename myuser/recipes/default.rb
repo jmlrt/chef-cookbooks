@@ -2,7 +2,7 @@
 # Cookbook Name:: myenv
 # Recipe:: default
 #
-# Copyright 2013, YOUR_COMPANY_NAME
+# Copyright 2013, JMLRT
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -39,7 +39,7 @@ end
 
 # Add my User to sudo groups
 
-['sudo", "wheel'].each do |g|
+["admin", "sudo", "wheel"].each do |g|
   group g do
     members node['myuser']['myuser']
     action :manage
