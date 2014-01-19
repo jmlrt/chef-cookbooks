@@ -22,7 +22,7 @@ when "rhel"
 end
 
 # Install some usefull packages
-package("vim")
+#package("vim")
 package("nmon")
 package("nmap")
 
@@ -42,45 +42,50 @@ if system("id pi > /dev/null 2>&1")
 end
 
 # Create my User and my Group
-group [:myenv][:mygroup] do
+group node["myenv"]["mygroup"] do
   action :create
-  gid [:myenv][:mygid]
+  gid node["myenv"]["mygid"]
 end
 
-user [:myenv][:myuser] do
+user node["myenv"]["myuser"] do
   action :create
   supports :manage_home => true
-  comment [:myenv][:mycomment]
-  uid [:myenv][:myuid]
-  gid [:myenv][:mygid]
-  home "/home/"[:myenv][:myuser]
+  comment node["myenv"]["mycomment"]
+  uid node["myenv"]["myuid"]
+  gid node["myenv"]["mygid"]
+  home "/home/#{node["myenv"]["myuser"]}"
   shell "/bin/bash"
-  password [:myenv][:mypassword]
+  password node["myenv"]["mypassword"]
 end
 
 # Add my User to sudo groups
+
+# FIXME
+#["sudo", "wheel"].each do |g|
+#group g do
+
 group "sudo" do
-  members [:myenv][:myuser]
+  members node["myenv"]["myuser"]
   action :manage
 end
 
 group "wheel" do
-  members [:myenv][:myuser]
+  members node["myenv"]["myuser"]
   action :manage
 end
 
 # Add my ssh pubkey
-directory "/home/"[:myenv][:myuser]"/.ssh" do
-  owner [:myenv][:myuser]
-  group [:myenv][:mygroup]
+directory "/home/#{node["myenv"]["myuser"]}/.ssh" do
+  owner node["myenv"]["myuser"]
+  group node["myenv"]["mygroup"]
   mode "0700"
   action :create
 end
 
-cookbook_file "/home/"[:myenv][:myuser]"/.ssh/authorized_keys" do
-  owner [:myenv][:myuser]
-  group [:myenv][:mygroup]
+cookbook_file "/home/#{node["myenv"]["myuser"]}/.ssh/authorized_keys" do
+  owner node["myenv"]["myuser"]
+  group node["myenv"]["mygroup"]
   mode "0600"
-  source [:myenv][:mypubkey]
+  source node["myenv"][:mypubkey]
   action :create
 end
