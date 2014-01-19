@@ -5,7 +5,7 @@ This file is used to list changes made in each version of the ansible cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of ansible
+- jmlrt - Initial release of ansible
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

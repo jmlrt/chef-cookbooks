@@ -1,6 +1,6 @@
 name             'python26'
 maintainer       'JMLRT'
-maintainer_email 'YOUR_EMAIL'
+maintainer_email 'julien@mailleret.fr'
 license          'All rights reserved'
 description      'Installs/Configures python26'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

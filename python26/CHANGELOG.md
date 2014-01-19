@@ -5,7 +5,7 @@ This file is used to list changes made in each version of the python26 cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of python26
+- jmlrt - Initial release of python26
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

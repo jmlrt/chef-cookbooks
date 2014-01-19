@@ -1,11 +1,11 @@
-sshd CHANGELOG
-==============
+iptables CHANGELOG
+==================
 
-This file is used to list changes made in each version of the sshd cookbook.
+This file is used to list changes made in each version of the iptables cookbook.
 
 0.1.0
 -----
-- jmlrt - Initial release of sshd
+- jmlrt - Initial release of iptables
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
