@@ -42,6 +42,7 @@ end
 ["admin", "sudo", "wheel"].each do |g|
   group g do
     members node['myuser']['myuser']
+    append true
     action :manage
   end
 end
@@ -58,6 +59,6 @@ cookbook_file "/home/#{node['myuser']['myuser']}/.ssh/authorized_keys" do
   owner node['myuser']['myuser']
   group node['myuser']['mygroup']
   mode "0600"
-  source node['myuser'][:mypubkey]
+  source node['myuser']['mypubkey']
   action :create
 end

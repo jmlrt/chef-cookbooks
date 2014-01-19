@@ -1,0 +1,5 @@
+# Run nmon in background daily
+nmon -f >> <%= node[:nmon][:nmondir] %>/<%= node[:nmon][:nmonfile] %>
+
+# Compress old nmon files
+find <%= node[:nmon][:nmondir] %> -name '*.nmon' -mtime +2 -exec gzip {} \;
