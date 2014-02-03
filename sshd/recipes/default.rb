@@ -7,6 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# TODO: Use line cookbook (http://community.opscode.com/cookbooks/line) instead
+# ruby_block to edit files
+
 ruby_block "Disable PermitRootLogin on sshd_config " do
   block do
     fe = Chef::Util::FileEdit.new("/etc/ssh/sshd_config")
